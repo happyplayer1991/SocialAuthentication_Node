@@ -49,11 +49,17 @@ router.get('/auth/twitter/callback',
 
 router.get('/auth/google', passportGoogle.authenticate('google', { scope: ['profile'] }));
 
+router.get('/auth/google/callback', (req, res) => {
+  res.redirect('/');
+});
+
+/*
 router.get('/auth/google/callback', 
   passportGoogle.authenticate('google', { failureRedirect: '/login' }),
   function(req, res) {
     // Successful authentication, redirect home.
     res.redirect('/');
   });
+*/
 
 module.exports = router;
