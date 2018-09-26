@@ -14,6 +14,7 @@ passport.use(new GoogleStrategy({
     callbackURL: config.google.callbackURL
   },
   function(accessToken, refreshToken, profile, cb) {
+    console.log('Google Strategy');
     User.findOrCreate({ googleId: profile.id }, function (err, user) {
       return cb(err, user);
     });

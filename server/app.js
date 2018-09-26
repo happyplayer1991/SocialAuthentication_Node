@@ -10,6 +10,9 @@ var passport = require('passport');
 var session = require('express-session');
 var mongoose = require('mongoose');
 
+// *** load models *** //
+require('./models/user');
+
 // *** routes *** //
 var routes = require('./routes/index.js');
 
@@ -19,7 +22,7 @@ var app = express();
 
 
 // *** mongoose *** //
-mongoose.connect('mongodb://localhost/passport-social-auth');
+mongoose.connect('localhost/passport-social-auth');
 
 
 // *** view engine *** //
