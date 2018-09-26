@@ -5,7 +5,7 @@ var router = express.Router();
 var passportLinkedIn = require('../auth/linkedin');
 var passportGithub = require('../auth/github');
 var passportTwitter = require('../auth/twitter');
-
+var passportGoogle = require('../auth/google');
 
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
@@ -44,6 +44,16 @@ router.get('/auth/twitter/callback',
   function(req, res) {
     // Successful authentication
     res.json(req.user);
+  });
+
+
+app.get('/auth/google', passportGoogle.authenticate('google', { scope: ['profile'] }));
+
+app.get('/auth/google/callback', 
+  passportGoogle.authenticate('google', { failureRedirect: '/login' }),
+  function(req, res) {
+    // Successful authentication, redirect home.
+    res.redirect('/');
   });
 
 module.exports = router;
