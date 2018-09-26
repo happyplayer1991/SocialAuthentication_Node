@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-
+var chalk = require('chalk');
 
 var passportLinkedIn = require('../auth/linkedin');
 var passportGithub = require('../auth/github');
@@ -58,7 +58,9 @@ router.get('/auth/google/callback', (req, res) => {
 router.get('/auth/google/callback', 
   passportGoogle.authenticate('google', { failureRedirect: '/login' }),
   function(req, res) {
-    console.log('Successful authentication');
+    console.log(chalk.green('Successful authentication'));
+    console.log(chalk.red('User'));
+    console.log(req.user);
     // Successful authentication, redirect home.
     res.redirect('/');
   });
