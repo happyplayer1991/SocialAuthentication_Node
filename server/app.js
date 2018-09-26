@@ -10,6 +10,8 @@ var passport = require('passport');
 var session = require('express-session');
 var mongoose = require('mongoose');
 
+// *** load config *** //
+var config = require('./_config');
 // *** load models *** //
 require('./models/user');
 
@@ -22,7 +24,12 @@ var app = express();
 
 
 // *** mongoose *** //
-mongoose.connect('localhost/passport-social-auth');
+mongoose.connect(config.db.uri, config.db.options, (err) => {
+  if(err) {
+    console.log(err);
+  }
+  console.log('Connected MongoDB successfully');
+});
 
 
 // *** view engine *** //
