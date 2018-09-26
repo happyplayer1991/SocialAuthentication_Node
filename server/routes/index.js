@@ -47,9 +47,9 @@ router.get('/auth/twitter/callback',
   });
 
 
-app.get('/auth/google', passportGoogle.authenticate('google', { scope: ['profile'] }));
+router.get('/auth/google', passportGoogle.authenticate('google', { scope: ['profile'] }));
 
-app.get('/auth/google/callback', 
+router.get('/auth/google/callback', 
   passportGoogle.authenticate('google', { failureRedirect: '/login' }),
   function(req, res) {
     // Successful authentication, redirect home.

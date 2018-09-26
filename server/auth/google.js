@@ -7,9 +7,9 @@ var init = require('./init');
 
 
 passport.use(new GoogleStrategy({
-    clientID: GOOGLE_CLIENT_ID,
-    clientSecret: GOOGLE_CLIENT_SECRET,
-    callbackURL: "http://www.example.com/auth/google/callback"
+    clientID: config.google.clientID,
+    clientSecret: config.google.clientSecret,
+    callbackURL: config.google.callbackURL
   },
   function(accessToken, refreshToken, profile, cb) {
     User.findOrCreate({ googleId: profile.id }, function (err, user) {
