@@ -1,5 +1,7 @@
 var passport = require('passport');
-var GoogleStrategy = require('passport-google-oauth20').Strategy;
+// *** import Passport Google Package *** //
+//var GoogleStrategy = require('passport-google-oauth20').Strategy;
+var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy; 
 
 var User = require('../models/user');
 var config = require('../_config');
