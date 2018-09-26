@@ -21,12 +21,12 @@ passport.use(new GoogleStrategy({
     console.log(chalk.red('profile'));
     console.log(profile);
 
-    User.findOrCreate({ googleId: profile.id }, function (err, user) {
+    User.findOrCreate({ someId: profile.id }, function (err, user) {
       console.log(chalk.red('User'));
       console.log(user);
       auth_user = {
         id: user.id,
-        googleId: user.googleId,
+        someId: user.someId,
         accessToken: accessToken
       }; 
       console.log(auth_user);
